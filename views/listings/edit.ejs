@@ -7,6 +7,7 @@
       action="/listings/<%= editListing._id %>?_method=PUT"
       novalidate
       class="needs-validation"
+      enctype="multipart/form-data"
     >
       <div class="mb-3">
         <label for="title" class="form-label"> Title </label>
@@ -30,14 +31,15 @@
         <div class="invalid-feedback">Please provide a valid description.</div>
       </div>
       <div class="mb-3">
-        <label for="image" class="form-label"> Image </label>
-        <input
-          name="listing[image]"
-          value="<%= editListing.image %>"
-          type="text"
-          class="form-control"
-          required
+        <p>Current Image:</p>
+        <img
+          src="<%= editListing.image.url.replace('/upload/', '/upload/w_250,h_300,c_fill/') %>"
+          alt=""
         />
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label"> Image </label>
+        <input name="listing[image]" type="file" class="form-control" />
       </div>
       <div class="row">
         <div class="mb-3 col-md-4">
@@ -84,4 +86,3 @@
     </form>
   </div>
 </div>
-
